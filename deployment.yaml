@@ -1,0 +1,36 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: sample-demo
+spec:
+  type: NodePort
+  selector:
+    app: sample-demo
+  ports:
+    - protocol: TCP
+      port: 9090
+      targetPort: 9000
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sample-demo
+  labels:
+    app: sample-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-demo
+  template:
+    metadata:
+      labels:
+        app: sample-demo
+        version: latest
+    spec:
+      containers:
+      - name: sample-demo
+        image: ssipflow/sample-demo:latest
+        ports:
+        - name: http
+          containerPort: 9000
