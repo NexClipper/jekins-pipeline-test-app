@@ -18,7 +18,7 @@ node {
     }
 
     stage('Build Docker Image') {
-        buildImage = docker.build("ssipflow/sample-demo:${commitHash}")
+        buildImage = docker.build("nexclipper/jekins-pipeline-test-app:${commitHash}")
     }
 
     stage('Archive') {
@@ -33,7 +33,7 @@ node {
         )
     }
 
-    stage('Kubernetes Deploy') {
-        sh 'kubectl -n=development apply -f deployment.yaml'
-    }
+    // stage('Kubernetes Deploy') {
+    //     sh 'kubectl -n=development apply -f deployment.yaml'
+    // }
 }
