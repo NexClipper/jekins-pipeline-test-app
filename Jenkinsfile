@@ -42,7 +42,15 @@ node {
         )
     }
 
+    // stage('Kubernetes Deploy') {
+    //     sh 'kubectl -n=development apply -f deployment.yaml'
+    // }
+
     stage('Kubernetes Deploy') {
-        sh 'kubectl -n=development apply -f deployment.yaml'
+        script {
+            sshagent(credentials:['7305cd8e-2078-4f53-a205-ff05567f500a']) {
+                sh 'ssh -o StrictHostKeyChecking=no -l root 192.168.0.171 kubectl -namepsace=developer-mg apply -f /root/devloper-mg/jenkins-pipeline-test-app.yaml'
+            }
+        }
     }
 }
