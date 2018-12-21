@@ -4,13 +4,13 @@ node {
     def commitHash
     def buildImage
 
-    stage("ssh-agent") {
-        script {
-            sshagent(credentials:['7305cd8e-2078-4f53-a205-ff05567f500a']) {
-                sh 'ssh -o StrictHostKeyChecking=no -l root 192.168.0.171 uname -a'
-            }
-        }
-    }
+    // stage("ssh-agent") {
+    //     script {
+    //         sshagent(credentials:['7305cd8e-2078-4f53-a205-ff05567f500a']) {
+    //             sh 'ssh -o StrictHostKeyChecking=no -l root 192.168.0.171 uname -a'
+    //         }
+    //     }
+    // }
 
     stage('Checkout') {
         git = checkout scm
