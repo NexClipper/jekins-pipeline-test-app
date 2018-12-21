@@ -10,6 +10,7 @@ node {
     }
 
     stage('Test') {
+        sh 'chmod +x gradlew'
         sh './gradlew check'
     }
 
