@@ -7,7 +7,7 @@ node {
     stage("ssh-agent") {
         script {
             sshagent(credentials:['94bb4d82-768b-49ba-86c5-5a6673b7868d']) {
-                sh 'ssh -o StrictHostKeyChecking=no -l kubemaster 192.168.0.171 root -a'
+                sh 'ssh -o StrictHostKeyChecking=no -l kubemaster 192.168.0.171 uname -a'
             }
         }
     }
