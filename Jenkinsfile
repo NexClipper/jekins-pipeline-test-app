@@ -34,7 +34,7 @@ node {
         )
     }
 
-    // stage('Kubernetes Deploy') {
-    //     sh 'kubectl -n=development apply -f deployment.yaml'
-    // }
+    stage('Kubernetes Deploy') {
+        sh 'kubectl -n=development apply -f deployment.yaml'
+    }
 }
