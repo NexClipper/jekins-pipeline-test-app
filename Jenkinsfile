@@ -6,7 +6,7 @@ node {
 
     stage("ssh-agent") {
         script {
-            sshagent(credentials:['94bb4d82-768b-49ba-86c5-5a6673b7868d']) {
+            sshagent(credentials:['7305cd8e-2078-4f53-a205-ff05567f500a']) {
                 sh 'ssh -o StrictHostKeyChecking=no -l root 192.168.0.171 uname -a'
             }
         }
