@@ -4,6 +4,14 @@ node {
     def commitHash
     def buildImage
 
+    stage("ssh-agent") {
+        script {
+            sshagent(credentials:['94bb4d82-768b-49ba-86c5-5a6673b7868d']) {
+                sh 'ssh -o StrictHostKeyChecking=no -l kubemaster 192.168.0.160 uname -a'
+            }
+        }
+    }
+
     stage('Checkout') {
         git = checkout scm
         commitHash = git.GIT_COMMIT
