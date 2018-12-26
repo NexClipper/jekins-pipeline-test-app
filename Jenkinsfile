@@ -15,10 +15,10 @@ node {
     stage('Checkout') {
         git = checkout scm
         commitHash = git.GIT_COMMIT
+        sh 'chmod +x gradlew'
     }
 
     stage('Test') {
-        sh 'chmod +x gradlew'
         sh './gradlew check'
     }
 
