@@ -14,7 +14,8 @@ node {
 
     stage('Checkout') {
         git = checkout scm
-        commitHash = git.GIT_COMMIT
+        //commitHash = git.GIT_COMMIT
+        commitHash = git.GIT_BRANCH
         sh 'chmod +x gradlew'
     }
 
